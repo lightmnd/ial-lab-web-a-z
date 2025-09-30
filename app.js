@@ -11,7 +11,8 @@ const weatherIcon = document.getElementById("weatherIcon");
 
 const apiUrl = "https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true";
 
-function showLoading() {
+function showLoading(param) {
+    console.log(param)
     loading.classList.remove("hidden");
     resultContainer.classList.add("hidden");
     errorMessage.textContent = "";
@@ -62,7 +63,7 @@ searchBtn.addEventListener("click", async () => {
         return;
     }
 
-    showLoading();
+    showLoading('pippo');
 
     try {
         const response = await fetch(`https://geocode.xyz/${city}?json=1`);
@@ -82,6 +83,7 @@ searchBtn.addEventListener("click", async () => {
             hideLoading();
             return;
         }
+
 
         hideLoading();
         showResults();
